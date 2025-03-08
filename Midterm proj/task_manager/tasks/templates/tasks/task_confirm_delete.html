@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Task</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Container */
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        h1 {
+            color: #dc3545;
+            font-size: 22px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            width: 120px;
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn.delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn.delete:hover {
+            background-color: #b52a37;
+        }
+
+        .btn.cancel {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn.cancel:hover {
+            background-color: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Are you sure you want to delete "{{ task.title }}"?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn delete">Yes, Delete</button>
+        </form>
+        <a href="{% url 'task_list' %}" class="btn cancel">Cancel</a>
+    </div>
+</body>
+</html>
